@@ -1,2 +1,2 @@
 # IMH
-# Repositorio para la asignatura de Tecnologías Industrial 2020
+Repositorio para la asignatura de Tecnologías Industrial 2020
