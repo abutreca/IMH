@@ -3,10 +3,10 @@
 #include <PubSubClient.h>
 #include <DHT.h>
 
-const char* nodeid       = "Miguel";
-const char* ssid         = "31EA";
-const char* password     = "ko@123456";
-const char* mqtt_server  = "test.mosquitto.org";
+const char* nodeid       = "ESP8266_DHT";
+const char* ssid         = "SSID";
+const char* password     = "PASSWORD";
+const char* mqtt_server  = "MQTT_SERVER";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -145,9 +145,15 @@ void loop() {
   Serial.print(hif);
   Serial.println(F("°F"));
  
-  String msg_h = String(h);
-  String msg_t = String(t);
-  client.publish("IMH/h", msg_h.c_str());
-  client.publish("IMH/t", msg_t.c_str());
-  delay(2000);
+//  String msg_h = String(h);
+//  String msg_t = String(t);
+
+  String msg = "{\"humidity\": " + String(h) + ", \"temperature\": " + String(t) + "}";
+  
+  
+//  client.publish("IMH/h", msg_h.c_str());
+//  client.publish("IMH/t", msg_t.c_str());
+  client.publish("IMH/", msg.c_str());
+  
+  delay(1800000);
 }
